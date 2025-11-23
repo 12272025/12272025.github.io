@@ -1,7 +1,3 @@
-<!-- PRISMA • Full Experience — Single-file (HTML/CSS/JS)
-     Features added: full menu with sections, animated loader, smooth page transitions,
-     CSS 3D prism component, neon hover effects, interactive sections, accessible markup.
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +6,7 @@
 <title>PRISMA • Experiencia Completa</title>
 
 <style>
+ html { scroll-behavior: smooth; }
   :root{
     --bg-1:#050612; --bg-2:#071428; --accent1:#7b5cff; --accent2:#2ad1ff; --neon:#9bf3ff;
     --glass: rgba(255,255,255,0.06);
@@ -20,9 +17,11 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{
-    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
-    color:#eef6ff; -webkit-font-smoothing:antialiased; overflow:hidden;
+   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #0A0E1C; /* color sólido como tu link */
+    color:#eef6ff; 
+    -webkit-font-smoothing:antialiased; 
+    overflow: auto;
   }
 
   /* LOADER */
@@ -33,13 +32,22 @@
   .loader-text{font-weight:700;letter-spacing:1px;color:var(--muted)}
 
   /* LAYOUT */
-  .app{display:grid;grid-template-rows:auto 1fr;min-height:100vh;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;padding:18px}
+  .app{display:grid;grid-template-rows:auto 1fr;min-height:auto;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;padding:18px}
   .app.ready{opacity:1;transform:none}
 
-  header{
-    position:fixed;left:18px;right:18px;top:18px;padding:10px 16px;border-radius:14px;background:linear-gradient(180deg,var(--glass),transparent);
-    display:flex;align-items:center;justify-content:space-between;gap:12px;backdrop-filter:blur(8px);z-index:40;border:1px solid rgba(255,255,255,0.04)
-  }
+header{
+    position: relative;
+    padding:10px 16px;
+    border-radius:14px;
+    background:linear-gradient(180deg,var(--glass),transparent);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    backdrop-filter:blur(8px);
+    z-index:5;
+    border:1px solid rgba(255,255,255,0.04)
+}
   .brand{display:flex;align-items:center;gap:12px}
   .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021220;box-shadow:0 8px 30px rgba(55,30,120,0.25)}
   .brand h1{font-size:18px;letter-spacing:1px}
@@ -58,19 +66,45 @@
   .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021220;padding:10px 14px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
 
   /* MAIN area */
-  main{margin-top:112px;padding:36px;height:calc(100vh - 160px);display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:start;overflow:hidden}
+main {
+  margin-top: 150px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+
+  height: auto !important;
+  overflow: visible !important;
+}
+
 
   /* SIDEBAR */
-  .sidebar{height:100%;overflow:auto;padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03)}
+  .sidebar{height:100%;overflow:auto;
+    padding:18px;border-radius:18px;
+    background: #0A0E1C;
+    border:1px solid rgba(255,255,255,0.03)}
   .menu-section{margin-bottom:20px}
-  .menu-section h3{font-size:13px;color:var(--muted);margin-bottom:10px}
-  .menu-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;color:var(--muted);cursor:pointer}
+  .menu-section h3{font-size:13px;
+    color:var(--muted);margin-bottom:10px}
+  .menu-item{display:flex;
+    align-items:center;gap:10px;padding:10px;border-radius:12px;color:var(--muted);cursor:pointer}
   .menu-item:hover{color:white;background:linear-gradient(90deg,rgba(128,80,255,0.06),rgba(40,210,255,0.03))}
 
   /* CONTENT PANELS */
-  .content{height:100%;overflow:auto;padding:18px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03)}
-  .panel{min-height:100%;padding:20px;opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
-  .panel.active{opacity:1;transform:none}
+ .content {
+  height: auto !important;
+  overflow: visible !important;
+  padding: 18px;
+  border-radius: 18px;
+  background: #0A0E1C; /* ← CAMBIO ESTO */
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.panel {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  min-height: 100vh; /* ← ESTO las convierte en “páginas” */
+}
 
   .hero-large{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:center}
   .intro{padding:18px}
@@ -151,7 +185,22 @@
   footer{margin-top:28px;padding:14px;text-align:center;color:rgba(255,255,255,0.65)}
 
   /* Responsive */
-  @media (max-width:980px){main{grid-template-columns:1fr;height:calc(100vh - 220px)} .hero-large{grid-template-columns:1fr;}.prism-wrap{height:220px}.sidebar{display:none}}
+@media (max-width:980px){
+  main{
+    grid-template-columns: 1fr;
+    height: auto;     
+    padding: 18px;
+  }
+  .hero-large{
+    grid-template-columns: 1fr;
+  }
+  .prism-wrap{
+    height: 220px;
+  }
+  .sidebar{
+    display: none;
+  }
+}
 /* Glow borders */
 .card {
   position: relative;
@@ -207,14 +256,16 @@
     justify-content: center;
   }
 
-  main {
-    margin-top: 112px;
-    padding: 36px;
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 28px;
-    align-items: start;
-  }
+ main {
+  margin-top: 150px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+  height: auto;
+  overflow: visible;
+}
 
   .hero-large {
     display: grid;
@@ -298,11 +349,11 @@
 }
 
 .marco {
-  border: 2px solid rgba(123, 92, 255, 0.6); /* borde con color violeta/azul */
-  border-radius: 14px; /* esquinas redondeadas */
-  padding: 18px;       /* espacio interno */
-  background: rgba(255,255,255,0.02); /* fondo semitransparente */
-  box-shadow: 0 4px 18px rgba(45,209,255,0.15); /* sombra ligera para resaltar */
+  border: 2px solid rgba(123, 92, 255, 0.6);
+  border-radius: 14px;
+  padding: 18px;
+  background: #0A0E1C; /* ← CAMBIO ESTO */
+  box-shadow: 0 4px 18px rgba(45,209,255,0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -312,7 +363,23 @@
 }
 
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
+/* Sidebar pegajosa sin romper layout */
+.sidebar {
+  position: sticky;
+  top: 180px; /* ajusta según altura del header */
+  height: max-content; /* solo ocupa lo que tiene */
+}
+
+/* Asegura que los paneles y marcos no se vean afectados */
+.content, .panel, .marco {
+  position: relative;
+}
 </style>
 
 </head>
@@ -353,20 +420,22 @@
   </header>
 
   <main>
-    <aside class="sidebar" aria-label="Navegación secundaria">
-      <div class="menu-section">
-        <h3>Atajos</h3>
-        <div class="menu-item" data-target="home">Inicio • Resumen</div>
-        <div class="menu-item" data-target="propuestas">Propuestas • Ideas</div>
-        <div class="menu-item" data-target="equipo">Equipo • Roles</div>
-        <div class="menu-item" data-target="eventos">Eventos • Calendario</div>
-      </div>
-      <div class="menu-section">
-        <h3>Recursos</h3>
-        <div class="menu-item">Guía rápida</div>
-        <div class="menu-item">Contacto de apoyo</div>
-      </div>
-    </aside>
+<aside class="sidebar" aria-label="Navegación secundaria">
+  <div class="menu-section">
+    <h3>Atajos</h3>
+    <a class="menu-item" href="#home">Inicio • Resumen</a>
+    <a class="menu-item" href="#propuestas">Propuestas • Ideas</a>
+    <a class="menu-item" href="#equipo">Equipo • Roles</a>
+    <a class="menu-item" href="#eventos">Eventos • Calendario</a>
+  </div>
+
+  <div class="menu-section">
+    <h3>Recursos</h3>
+    <a class="menu-item" href="#guia">Guía rápida</a>
+    <a class="menu-item" href="#contacto">Contacto de apoyo</a>
+  </div>
+</aside>
+
 
     <section class="content" id="content" tabindex="0">
 
@@ -441,9 +510,7 @@
       <p>Buzón anónimo, asesorías rápidas y guía estudiantil.</p>
     </div>
   </div>
-</article>
-<article id="propuestas" class="panel" aria-labelledby="prop-title">
-  <h2 id="prop-title">Propuestas Ultra</h2>
+   <div class="features-container" style="margin-top:40px">
   <div class="features-container">
     <div class="feature marco">
       <h4>Aulas Tech</h4>
@@ -481,15 +548,18 @@
       <p>Buzón anónimo, asesorías rápidas y guía estudiantil.</p>
     </div>
   </div>
+</div>
 </article>
+
 
       <article id="equipo" class="panel" aria-labelledby="team-title">
         <h2 id="team-title">Nuestro Equipo</h2>
-          <div class="features-container">
+        <div class="features-container">
+           <div class="feature marco">
                  <!-- Primera fila -->
             <div class="feature marco">
             <b><h4>ALCALDE</h4></b>
-            <p>Thyrza Jade Ruiz Oroche</p>
+            <p>Leonardo Macedo de Souza</p>
           </div>
           <div class="feature marco">
             <b><h4>TENIENTE ALCALDE</h4></b>
@@ -497,17 +567,15 @@
           </div>
           <div class="feature marco">
             <b><h4>REGIDOR EN EDUCACION, CULTURA RECREACIÓN Y DEPORTE</h4></b>
-            <p>Leonardo Macedo de Souza</p>
+            <p>.......</p>
           </div>
            <div class="feature marco">
             <b><h4>REGIDOR DE SALUD Y AMBIENTE</h4></b>
             <p>Emilio Trujillo Portocarrero</p>
           </div>
-        </div>
-           <div class="features-container">
            <div class="feature marco">
             <b><h4>REGIDOR DE EMPRENDIMIENTO Y ACTIVIDADES PRODUCTIVAS</h4></b>
-            <p>Geraldine Arevalo Rios</p>
+            <p>Thyrza Jade Ruiz Oroche</p>
           </div>
          <div class="feature marco">
             <b><h4>REGIDOR DE DERECHOS DEL NIÑO, NIÑA Y ADOLESCENTE</h4></b>
@@ -515,9 +583,14 @@
           </div>
          <div class="feature marco">
             <b><h4>REGIDOR DE COMUNICACIÓN Y TECNOLOGÍA DE LA INFORMACIÓN</h4></b>
-            <p>Lia Luana Trujillo</p>
+            <p>Geraldine Arevalo Rios</p>
+          </div>
+          <div class="feature marco">
+            <b><h4>------------------------------------</h4></b>
+            <p>------------</p>
           </div>
         </div>
+      </div>
       </article>
 
       <article id="eventos" class="panel" aria-labelledby="ev-title">
@@ -528,7 +601,19 @@
           <div class="feature"><h4>Línea PRISMA – Escúchate</h4><p>Buzón y atención inmediata para estudiantes</p></div>
         </div>
       </article>
+      
 
+    <section class="content" id="content" tabindex="0">
+      
+<section id="guia" class="panel" aria-labelledby="guia-title">
+  <h2 id="guia-title">Guía rápida</h2>
+  <p>Contenido de la guía...</p>
+</section>
+
+<section id="contacto" class="panel" aria-labelledby="contacto-title">
+  <h2 id="contacto-title">Contacto de apoyo</h2>
+  <p>Información de contacto...</p>
+</section>
     </section>
   </main>
 
@@ -538,25 +623,6 @@
 </div>
 
 <script>
-// Accessibility: allow keyboard navigation to switch sections (1-4)
-document.addEventListener('keydown', (e)=>{
-  if(e.key>='1' && e.key<='4'){
-    const map=['home','propuestas','equipo','eventos'];
-    showPanel(map[Number(e.key)-1]);
-  }
-});
-
-// Simple SPA behavior: handle clicks
-const items = document.querySelectorAll('.menu-item');
-items.forEach(it=>it.addEventListener('click', ()=> showPanel(it.dataset.target)));
-document.querySelectorAll('nav a').forEach(a=> a.addEventListener('click', (ev)=>{ ev.preventDefault(); const id = a.getAttribute('href').substring(1); showPanel(id); }));
-
-function showPanel(id){
-  const panels = document.querySelectorAll('.panel');
-  panels.forEach(p=> p.classList.toggle('active', p.id===id));
-  // for ARIA
-  document.getElementById('content').focus();
-}
 
 // Prism subtle auto-rotation
 const prism = document.getElementById('prism');
@@ -580,7 +646,10 @@ document.getElementById('contactBtn').addEventListener('click', ()=>{
 });
 
 // Open Expo quick action
-document.getElementById('openExpo').addEventListener('click', ()=> showPanel('eventos'));
+document.getElementById('openExpo').addEventListener('click', ()=>{
+  document.querySelector('#eventos').scrollIntoView({behavior:'smooth'});
+});
+
 
 // Loader fade
 window.addEventListener('load', ()=>{
@@ -593,9 +662,18 @@ window.addEventListener('load', ()=>{
 
 // Resize canvas particles (simple subtle effect)
 const canvas = document.createElement('canvas');
-canvas.id='bgcanvas'; canvas.style.position='fixed'; canvas.style.inset=0; canvas.style.zIndex='-2'; canvas.style.opacity=0.08; document.body.appendChild(canvas);
-const c = canvas.getContext('2d'); function fit(){canvas.width=innerWidth;canvas.height=innerHeight;} fit(); window.addEventListener('resize',fit);
-let stars=[]; for(let i=0;i<160;i++){stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.6+0.2})}
+canvas.id='bgcanvas';
+ canvas.style.position='fixed';
+ canvas.style.inset=0;
+  canvas.style.zIndex='-2';
+ canvas.style.opacity=0.08;
+  document.body.appendChild(canvas);
+const c = canvas.getContext('2d');
+ function fit(){canvas.width=innerWidth;
+ canvas.height=innerHeight;} fit();
+  window.addEventListener('resize',fit);
+let stars=[];
+ for(let i=0;i<160;i++){stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.6+0.2})}
 function drawStars(){ c.clearRect(0,0,canvas.width,canvas.height); for(let s of stars){ c.beginPath(); c.fillStyle='rgba(70,160,255,0.9)'; c.arc(s.x,s.y,s.r,0,Math.PI*2); c.fill(); } }
 (function loop(){ drawStars(); requestAnimationFrame(loop); })();
 
@@ -777,18 +855,6 @@ document.getElementById("copyBtn").addEventListener("click",()=>{
 <script>
   const prism = document.getElementById('prism');
 
-// Rotación interactiva con mouse
-let rotX = 25, rotY = 0, mouseDown = false, lastX = 0, lastY = 0;
-prism.addEventListener('mousedown', e => { mouseDown=true; lastX=e.clientX; lastY=e.clientY; });
-window.addEventListener('mouseup', () => mouseDown=false);
-window.addEventListener('mousemove', e => {
-  if(!mouseDown) return;
-  const dx = (e.clientX-lastX)/4;
-  const dy = (e.clientY-lastY)/4;
-  rotY += dx; rotX += dy;
-  prism.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-  lastX = e.clientX; lastY = e.clientY;
-});
 
 // Generar partículas internas
 const particleContainer = prism.querySelector('.particles-inside');
@@ -799,7 +865,13 @@ for(let i=0;i<30;i++){
   p.style.animationDelay = `${Math.random()*4}s`;
   particleContainer.appendChild(p);
 }
-
+// Asegura que siempre se muestre la sección "home" al entrar
+window.addEventListener('load', ()=>{
+  const homeSection = document.getElementById('home');
+  if(homeSection){
+    homeSection.scrollIntoView({behavior:'auto', block:'start'});
+  }
+});
 </script>
 </body>
 </html>
