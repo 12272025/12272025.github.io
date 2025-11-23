@@ -380,6 +380,24 @@ header {
 .content, .panel, .marco {
   position: relative;
 }
+.fila-title {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-size: 22px;
+  color: var(--neon);
+  text-align: left;
+}
+
+.features-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.feature.marco {
+  flex: 1;
+  min-width: 200px; /* asegura que haya 4 en línea en pantallas grandes */
+}
 </style>
 
 </head>
@@ -402,7 +420,7 @@ header {
       <div class="logo">PR</div>
       <div>
         <h1>PRISMA</h1>
-        <div style="font-size:12px;color:rgba(255,255,255,0.65)">Programa de Renovación • Integración • Mejora</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.65)">Proyecto Renovable para la Inclusión • Sostenibilidad • Motivación Académica</div>
       </div>
     </div>
 
@@ -471,84 +489,70 @@ header {
 
       </article>
 
-      <article id="propuestas" class="panel" aria-labelledby="prop-title">
-  <h2 id="prop-title">Propuestas Ultra</h2>
-  <div class="features-container">
-    <div class="feature marco">
-      <h4>Aulas Tech</h4>
-      <p>Pizarras inteligentes, kits portátiles y estaciones creativas.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Conexión Estudiantil</h4>
-      <p>Zona chill, clubes y eventos culturales cada mes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Eco Prisma</h4>
-      <p>Jardines verticales, reciclaje activo y retos verdes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Soporte</h4>
-      <p>Buzón anónimo, asesorías rápidas y guía estudiantil.</p>
-    </div>
+<article id="propuestas" class="panel" aria-labelledby="prop-title">
+  
+  <!-- FILA 1 -->
+  <h2 class="fila-title">Propuestas Ultra 1</h2>
+  <div class="features-row">
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
   </div>
 
-  <div class="features-container" style="margin-top:18px">
-    <div class="feature marco">
-      <h4>_____</h4>
-      <p>:::::::::::::</p>
-    </div>
-    <div class="feature marco">
-      <h4>Conexión Estudiantil</h4>
-      <p>Zona chill, clubes y eventos culturales cada mes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Eco Prisma</h4>
-      <p>Jardines verticales, reciclaje activo y retos verdes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Soporte</h4>
-      <p>Buzón anónimo, asesorías rápidas y guía estudiantil.</p>
-    </div>
-  </div>
-   <div class="features-container" style="margin-top:40px">
-  <div class="features-container">
-    <div class="feature marco">
-      <h4>Aulas Tech</h4>
-      <p>Pizarras inteligentes, kits portátiles y estaciones creativas.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Conexión Estudiantil</h4>
-      <p>Zona chill, clubes y eventos culturales cada mes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Eco Prisma</h4>
-      <p>Jardines verticales, reciclaje activo y retos verdes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Soporte</h4>
-      <p>Buzón anónimo, asesorías rápidas y guía estudiantil.</p>
-    </div>
+  <!-- FILA 2 -->
+  <h2 class="fila-title">Propuestas Ultra 2</h2>
+  <div class="features-row">
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
   </div>
 
-  <div class="features-container" style="margin-top:18px">
-    <div class="feature marco">
-      <h4>_____</h4>
-      <p>:::::::::::::</p>
-    </div>
-    <div class="feature marco">
-      <h4>Conexión Estudiantil</h4>
-      <p>Zona chill, clubes y eventos culturales cada mes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Eco Prisma</h4>
-      <p>Jardines verticales, reciclaje activo y retos verdes.</p>
-    </div>
-    <div class="feature marco">
-      <h4>Soporte</h4>
-      <p>Buzón anónimo, asesorías rápidas y guía estudiantil.</p>
-    </div>
+  <!-- FILA 3 -->
+  <h2 class="fila-title">Propuestas Ultra 3</h2>
+  <div class="features-row">
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
   </div>
-</div>
+
+  <!-- FILA 4 -->
+  <h2 class="fila-title">Propuestas Ultra 4</h2>
+  <div class="features-row">
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+  </div>
+
+  <!-- FILA 5 -->
+<h2 class="fila-title">Propuestas Ultra 5</h2>
+  <div class="features-row">
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+  </div>
+
+  <!-- FILA 6 -->
+ <h2 class="fila-title">Propuestas Ultra 6</h2>
+  <div class="features-row">
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+  </div>
+
+  <!-- FILA 7 -->
+  <h2 class="fila-title">Propuestas Ultra 7</h2>
+  <div class="features-row">
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+    <div class="feature marco">...</div>
+  </div>
 </article>
 
 
