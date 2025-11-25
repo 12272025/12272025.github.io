@@ -398,6 +398,250 @@ header {
   flex: 1;
   min-width: 200px; /* asegura que haya 4 en línea en pantallas grandes */
 }
+
+.feature {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature::before {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -120%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, var(--neon) 0%, transparent 60%);
+  opacity: 0.18;
+  transform: rotate(25deg);
+  animation: sparkle 6s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0% { transform: translate(-20%, -20%) rotate(25deg); }
+  50% { transform: translate(20%, 20%) rotate(25deg); }
+  100% { transform: translate(-20%, -20%) rotate(25deg); }
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: swipe 5s infinite linear;
+}
+
+@keyframes swipe {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: -100%; }
+}
+
+h1, h2, h3 {
+  text-shadow: 0 0 10px var(--neon);
+}
+
+.mini-frase-home {
+  font-size: 16px;
+  opacity: 0.75;
+  margin-bottom: 10px;
+  animation: fraseFloatHome 4s ease-in-out infinite;
+}
+
+@keyframes fraseFloatHome {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+#home .sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--neon);
+  border-radius: 50%;
+  opacity: 0.7;
+  box-shadow: 0 0 12px var(--neon);
+  animation: sparkFloat 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes sparkFloat {
+  0% { transform: translateY(0) scale(0.8); opacity: .4; }
+  50% { transform: translateY(-18px) scale(1.2); opacity: 1; }
+  100% { transform: translateY(0) scale(0.8); opacity: .4; }
+}
+
+.floating-ball {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, var(--neon), transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.35;
+  animation: moveBall 12s infinite alternate ease-in-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes moveBall {
+  0% { transform: translate(10vw, 15vh); }
+  100% { transform: translate(60vw, 70vh); }
+}
+
+
+.touch-follow {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--neon);
+  opacity: 0.4;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+  filter: blur(6px);
+  z-index: 9999;
+}
+
+
+/* CONTENEDOR */
+.guia-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  animation: fadeIn 0.7s ease forwards;
+}
+
+/* TÍTULO */
+.guia-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #8b5bff, #65e0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* INTRO */
+.guia-intro {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #eaf6ff;
+  opacity: 0.9;
+}
+
+/* BLOQUES */
+.guia-block {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  margin: 16px 0;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 15px rgba(160, 111, 255, 0.25);
+  border-left: 3px solid #8b5bff;
+  animation: floatUp 0.6s ease;
+}
+
+/* FRASE */
+.frase-block {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.1rem;
+  border-left-color: #65e0ff;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .guia-title {
+    font-size: 1.6rem;
+  }
+  .guia-block {
+    padding: 16px;
+  }
+}
+
+
+/* ZONA PRISMA – versión suave y elegante */
+.zona-box {
+  margin-top: 15px;
+  padding: 20px;
+  background: #f4f1f8; /* lavanda pastel suave */
+  border-radius: 15px;
+  border: 1px solid rgba(120, 90, 160, 0.15); /* borde suave */
+}
+
+.zp-desc {
+  font-size: 1rem;
+  color: #5b4c70; /* gris-lavanda */
+  margin-bottom: 18px;
+}
+
+.zp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.zp-item {
+  background: #ffffff; /* blanco limpio */
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05); 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); 
+  transition: 0.25s ease;
+}
+
+.zp-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.zp-item h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  color: #6d5a88; /* tono lavanda más fuerte pero elegante */
+}
+
+.zp-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #494949; /* gris suave */
+}
+
+@media(min-width: 650px) {
+  .zp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 950px) {
+  .zp-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 </style>
 
 </head>
@@ -428,7 +672,7 @@ header {
       <a href="#home" class="neon">Inicio</a>
       <a href="#propuestas" class="neon neon-link">Propuestas</a>
       <a href="#equipo" class="neon">Equipo</a>
-      <a href="#eventos" class="neon">Eventos</a>
+      <a href="#Zona Prisma" class="neon">Zona Prisma</a>
     </nav>
 
     <div class="actions">
@@ -444,23 +688,26 @@ header {
     <a class="menu-item" href="#home">Inicio • Resumen</a>
     <a class="menu-item" href="#propuestas">Propuestas • Ideas</a>
     <a class="menu-item" href="#equipo">Equipo • Roles</a>
-    <a class="menu-item" href="#eventos">Eventos • Calendario</a>
+    <a class="menu-item" href="#Zona Prisma">Zona Prisma</a>
   </div>
 
   <div class="menu-section">
     <h3>Recursos</h3>
-    <a class="menu-item" href="#guia">Guía rápida</a>
+    <a class="menu-item" href="#guia">Plan de Apoyo Escolar</a>
     <a class="menu-item" href="#contacto">Contacto de apoyo</a>
   </div>
+
 </aside>
 
 
     <section class="content" id="content" tabindex="0">
 
       <article id="home" class="panel active" aria-labelledby="home-title">
+
         <div class="hero-large">
           <div class="intro">
             <h2 id="home-title">Bienvenido a PRISMA</h2>
+            <h4><p class="mini-frase-home">✨ Donde la creatividad se vuelve movimiento ✨</p></h4>
             <p>Transformamos la experiencia escolar con creatividad, apoyo real y tecnología accesible. Explora las propuestas, conoce al equipo y únete a nuestros eventos.</p>
             <div style="margin-top:18px;display:flex;gap:12px">
               <a class="neon-link" href="#propuestas">Ver Propuestas</a>
@@ -490,35 +737,85 @@ header {
       </article>
 
 <article id="propuestas" class="panel" aria-labelledby="prop-title">
+
+    <h2 class="fila-title">ALCALDE</h2>
+  <div class="features-row">
+    <div class="feature marco">Mi objetivo principal como alcalde es liderar, organizar y gestionar actividades
+     que promuevan el aprendizaje, ser la voz de la comunidad estudiantil y que nuestro colegio se convierta un lugar
+      donde todos nos sintamos escuchados y podamos mejorar cosas que nos afectan día a día.
+    Trabajare de la mano junto a mi equipo, dirección y promotoria, para poder satisfacer las necesidades de los estudiantes y del colegio en general, todo esto con el fin de que todos los alumnos de la institución.</div>
+
+  </div>
+ 
+  <h2 class="fila-title">TENIENTE ALCALDESA</h2>
+  <div class="features-row">
+    <div class="feature marco">Mi objetivo principal como vicealcaldesa es apoyar, acompañar y fortalecer el trabajo del alcalde y de todo el Municipio Escolar,
+     asegurando que cada proyecto, actividad y propuesta se cumplan de manera responsable y organizada. Seré un puente entre los estudiantes y la gestión del colegio,
+      velando porque todas las voces sean tomadas en cuenta y que cada alumno se sienta reconocido y escuchado.</div>
+  </div>
   
-  <!-- FILA 1 -->
-  <h2 class="fila-title">Propuestas Ultra 1</h2>
+  <h2 class="fila-title">REGIDOR DE EDUCACIÓN, CULTURA, RECREACIÓN Y DEPORTE.</h2>
   <div class="features-row">
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
+    <div class="feature marco"><p><b>1. Gimnasio:</b></p>
+    Hacer un convenio con un gimnasio para poder entrenar con nuestras selecciones.
+    Como ejemplo Cristiano Ronaldo entrena todos los días y por eso es uno de los mejores deportistas 
+    yo quiero que en el colegio no solo sean buenos estudiantes sino también deportistas de élite.
+    </div>
+    <div class="feature marco"><p><b>2.Comite deportivo:</b></p>
+     El comité deportivo estaría integrado por un representante de cada deporte así fomentaríamos la
+      coordinación de los entrenamientos consultas y recomendaciones que tienen los deportistas 
+
+    </div>
+    <div class="feature marco"><p><b>3.Charlas de orientación deportiva:</b></p>
+    Estas charlas estarán pensadas como un espacio cercano y motivador, donde los estudiantes puedan descubrir la importancia
+     de cuidar su cuerpo y su rutina diaria. Se hablará de manera sencilla y amigable sobre la alimentaciónetc.
+    </div>
+    <div class="feature marco"><p><b>4.caminata y circuitos:</b></p>
+Trataría de hacer caminatas o maratones una vez al mes para promover la buena salud y también incentivar a los padres de familia.
+<p><b>5.Concursos Académicos: </b></p>
+Competencias internas para motivar el aprendizaje, fomentar la competitividad sana entre estudiantes y puedan demostrar todo lo aprendido en clases.
+</div>
+  </div>
+  
+  <h2 class="fila-title">REGIDORA DE DERECHOS DEL NIÑO, NIÑA Y ADOLESCENTE.</h2>
+  <div class="features-row">
+    <div class="feature marco"><p><b>1.Apoyo emocional y seguimiento de los estudiantes por parte de los profesores:</b></p>
+Los profesores actuarían como apoyo de la psicóloga del colegio, observando cómo se sienten los alumnos tanto académica como emocionalmente.
+Si detectan que un estudiante está más triste o deprimido de lo normal, podrían avisar a la psicóloga para intervenir antes de que surjan problemas graves
+    </div>
+    <div class="feature marco"><p><b>2.Charlas de concientización y prevención:</b></p>
+<p>• Bullying y ciberbullying: Enseñar a identificar, prevenir y actuar frente al acoso.</p>
+<p>• Violencia: Guiar a los alumnos para manejar situaciones violentas en su vida diaria.</p>
+<p>• Embarazo adolescente: Promover autocuidado y decisiones responsables, reconocer abusos y, para grados mayores, brindar información sobre anticonceptivos y riesgos de un embarazo temprano.</p>
+    </div>
+    <div class="feature marco"><p><b>3.Premiación al salón con mejor convivencia y orden::</b></p>
+    Se premiaría al salón más limpio, respetuoso, ordenado, participativo y con mejor convivencia.
+    El premio sería dinero en efectivo o vales de consumo en el cafetín del colegio, previa coordinación con la señora del quiosco
+
+    </div>
+    <div class="feature marco"><p><b>4.Cartas del futuro:</b></p>
+Los estudiantes escribirán una carta con sus metas del año y colocarán una foto actual. El tutor guardará todas las cartas en un envase y las devolverá el último día de clases para que cada alumno vea sus avances, reflexione sobre su crecimiento y se motive a seguir cumpliendo objetivos.
+    </div>
   </div>
 
-  <!-- FILA 2 -->
-  <h2 class="fila-title">Propuestas Ultra 2</h2>
+  
+  <h2 class="fila-title">REGIDORA DE EMPRENDIMIENTO Y ACTIVIDADES PRODUCTIVAS.</h2>
   <div class="features-row">
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
+    <div class="feature marco"><p><b> </b></p>
+
+    </div>
+    <div class="feature marco"><p><b> </b></p>
+
+    </div>
+    <div class="feature marco"><p><b> </b></p>
+
+    </div>
+    <div class="feature marco"><p><b> </b></p>
+
+    </div>
   </div>
 
-  <!-- FILA 3 -->
-  <h2 class="fila-title">Propuestas Ultra 3</h2>
-  <div class="features-row">
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-  </div>
-
-  <!-- FILA 4 -->
+  
   <h2 class="fila-title">Propuestas Ultra 4</h2>
   <div class="features-row">
     <div class="feature marco">...</div>
@@ -527,7 +824,7 @@ header {
     <div class="feature marco">...</div>
   </div>
 
-  <!-- FILA 5 -->
+
 <h2 class="fila-title">Propuestas Ultra 5</h2>
   <div class="features-row">
     <div class="feature marco">...</div>
@@ -545,14 +842,6 @@ header {
     <div class="feature marco">...</div>
   </div>
 
-  <!-- FILA 7 -->
-  <h2 class="fila-title">Propuestas Ultra 7</h2>
-  <div class="features-row">
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-    <div class="feature marco">...</div>
-  </div>
 </article>
 
 
@@ -571,7 +860,7 @@ header {
           </div>
           <div class="feature marco">
             <b><h4>REGIDOR EN EDUCACION, CULTURA RECREACIÓN Y DEPORTE</h4></b>
-            <p>.......</p>
+            <p>Dante Ramiro Rengifo Puerta</p>
           </div>
            <div class="feature marco">
             <b><h4>REGIDOR DE SALUD Y AMBIENTE</h4></b>
@@ -590,29 +879,115 @@ header {
             <p>Geraldine Arevalo Rios</p>
           </div>
           <div class="feature marco">
-            <b><h4>------------------------------------</h4></b>
-            <p>------------</p>
+            <b><h4>REGIDOR DE VALORES Y LA BUENA CONVIVENCIA</h4></b>
+            <p>Luisa Milene Trujillo Portocarrero</p>
           </div>
         </div>
       </div>
       </article>
 
-      <article id="eventos" class="panel" aria-labelledby="ev-title">
-        <h2 id="ev-title">Próximos Eventos</h2>
-        <div style="margin-top:12px;display:flex;flex-direction:column;gap:12px">
-          <div class="feature"><h4>Expo PRISMA</h4><p>Feria de proyectos — fecha por confirmar</p></div>
-          <div class="feature"><h4>Día Creativo</h4><p>Talleres artísticos y música</p></div>
-          <div class="feature"><h4>Línea PRISMA – Escúchate</h4><p>Buzón y atención inmediata para estudiantes</p></div>
-        </div>
-      </article>
+<article id="Zona Prisma" class="panel" aria-labelledby="zp-title">
+  <h2 id="zp-title">Zona Prisma</h2>
+
+  <section class="zona-box">
+    <p class="zp-desc">Tu espacio de motivación, apoyo y mensajes que inspiran cada semana.</p>
+
+    <div class="zp-grid">
+      <div class="zp-item">
+        <h4>✨ Frase del día</h4>
+        <p>“Todo avance, por pequeño que sea, suma.”</p>
+      </div>
+
+      <div class="zp-item">
+        <h4>💜 Mensaje del equipo</h4>
+        <p>Creemos en tu potencial. Sigue creciendo, sigue brillando.</p>
+      </div>
+
+      <div class="zp-item">
+        <h4>🔥 Publicación de la semana</h4>
+        <p>“Haz algo hoy por la persona que quieres ser mañana.”</p>
+      </div>
+
+      <div class="zp-item">
+        <h4>🌈 Mini mural Prisma</h4>
+        <p>Colores, unión y creatividad que reflejan nuestra esencia.</p>
+      </div>
+
+      <div class="zp-item">
+        <h4>⭐ Reto semanal</h4>
+        <p>Comparte una pequeña acción que te hizo sentir orgulloso.</p>
+      </div>
+
+      <div class="zp-item">
+        <h4>💫 Recordatorio</h4>
+        <p>Tu bienestar es prioridad. Respira, avanza, confía.</p>
+      </div>
+    </div>
+  </section>
+</article>
       
 
     <section class="content" id="content" tabindex="0">
       
-<section id="guia" class="panel" aria-labelledby="guia-title">
-  <h2 id="guia-title">Guía rápida</h2>
-  <p>Contenido de la guía...</p>
+<section id="guia" class="panel">
+
+  <div class="guia-container">
+
+    <h1 class="guia-title">Guía de Apoyo</h1>
+
+    <p class="guia-intro">
+      Un espacio hecho para ayudarte a organizarte, cuidarte y brillar en lo académico y personal.
+    </p>
+
+    <!-- Objetivo -->
+    <div class="guia-block">
+      <h2>✧ Objetivo</h2>
+      <p>Apoyarte a manejar mejor tu tiempo, tu energía y tus estudios, con pasos simples y reales.</p>
+    </div>
+
+    <!-- Rutina diaria -->
+    <div class="guia-block">
+      <h2>✧ Guía Rápida del Día</h2>
+      <ul>
+        <li><strong>Antes de clases:</strong> revisa tu horario, prepara tu material, respira.</li>
+        <li><strong>Durante clases:</strong> participa, anota lo clave, mantén el enfoque.</li>
+        <li><strong>Después de clases:</strong> descansa, repasa, organiza tu mochila.</li>
+      </ul>
+    </div>
+
+    <!-- Hábitos -->
+    <div class="guia-block">
+      <h2>✧ Hábitos que mejoran tu rendimiento</h2>
+      <ul>
+        <li>Dormir mínimo 7 horas.</li>
+        <li>Colores para separar cursos.</li>
+        <li>Pausas cada 40 minutos.</li>
+        <li>Tomar agua cada 1–2 horas.</li>
+      </ul>
+    </div>
+
+    <!-- Guía emocional -->
+    <div class="guia-block frase-block">
+      <p>“Si hoy te sientes saturado, respira.  
+      El progreso existe incluso en pasos pequeños.”</p>
+    </div>
+
+    <!-- Checklist -->
+    <div class="guia-block">
+      <h2>✧ Autocuidado</h2>
+      <ul>
+        <li>Dormí bien</li>
+        <li>Comí algo nutritivo</li>
+        <li>Tomé agua</li>
+        <li>Organicé mis apuntes</li>
+        <li>Hice algo que me hizo feliz</li>
+      </ul>
+    </div>
+
+  </div>
+
 </section>
+
 
 <section id="contacto" class="panel" aria-labelledby="contacto-title">
   <h2 id="contacto-title">Contacto de apoyo</h2>
@@ -651,7 +1026,7 @@ document.getElementById('contactBtn').addEventListener('click', ()=>{
 
 // Open Expo quick action
 document.getElementById('openExpo').addEventListener('click', ()=>{
-  document.querySelector('#eventos').scrollIntoView({behavior:'smooth'});
+  document.querySelector('#Zona Prisma').scrollIntoView({behavior:'smooth'});
 });
 
 
@@ -877,5 +1252,35 @@ window.addEventListener('load', ()=>{
   }
 });
 </script>
+<script>
+  const home = document.getElementById("home");
+
+for (let i = 0; i < 6; i++) {
+  const s = document.createElement("div");
+  s.classList.add("sparkle");
+  s.style.top = `${40 + Math.random()*40}%`;
+  s.style.left = `${10 + Math.random()*80}%`;
+  s.style.animationDelay = `${Math.random()*3}s`;
+  home.appendChild(s);
+}
+
+const ball = document.createElement("div");
+ball.classList.add("floating-ball");
+document.body.appendChild(ball);
+
+
+
+const touchCircle = document.createElement("div");
+touchCircle.classList.add("touch-follow");
+document.body.appendChild(touchCircle);
+
+document.addEventListener("touchmove", (e) => {
+  const touch = e.touches[0];
+  touchCircle.style.left = touch.clientX + "px";
+  touchCircle.style.top = touch.clientY + "px";
+});
+
+</script>
+
 </body>
 </html>
